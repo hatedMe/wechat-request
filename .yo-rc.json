@@ -1,0 +1,40 @@
+{
+  "ajax": {
+    "configuration": {
+      "config": {
+        "webpackOptions": {
+          "module": {
+            "rules": [
+              {
+                "test": "/\\.js$/",
+                "exclude": "/node_modules/",
+                "loader": "'babel-loader'",
+                "options": {
+                  "presets": [
+                    "'env'"
+                  ]
+                }
+              }
+            ]
+          },
+          "plugins": [
+            "new UglifyJSPlugin()"
+          ],
+          "entry": "\"index\"",
+          "output": {
+            "filename": "'[name].bundle.js'",
+            "path": "path.resolve(__dirname, 'dist')"
+          }
+        },
+        "topScope": [
+          "const webpack = require('webpack')",
+          "const path = require('path')",
+          "/*\n * We've enabled UglifyJSPlugin for you! This minifies your app\n * in order to load faster and run less javascript.\n *\n * https://github.com/webpack-contrib/uglifyjs-webpack-plugin\n *\n */",
+          "const UglifyJSPlugin = require('uglifyjs-webpack-plugin');",
+          "\n"
+        ],
+        "configName": "prod"
+      }
+    }
+  }
+}
