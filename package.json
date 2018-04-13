@@ -1,12 +1,18 @@
 {
   "name": "wechat-request",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha",
   "description": "",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "request",
+    "wechat",
+    "promise",
+    "http",
+    "微信小程序"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
