@@ -118,7 +118,7 @@ wxRequest.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlenc
 ```
 
 ## 致谢 && 参考
-* [wxRequest](https://github.com/wxRequest/wxRequest)
+* [axios](https://github.com/axios/axios)
 
 
 ## License
