@@ -2,21 +2,31 @@
 
 
 import * as util  from './util';
+import defaults from './defaults';
 
-class X {
-    constructor(){
-        this.defaults = defaults
+
+
+class Request {
+    constructor( config ){
+        this.defaults = config;
     }
+    request( config ){
+        if( typeof config === 'string'){
+            config = util.merge({url: arguments[0]}, arguments[1]);
+        }
 
-    request(url , data , options){
-        return new Promise((resolve, reject) => {
-            wx.request({
-                url : url ,
-                data : data ,
-                header : header ,
-                method : method ,
-                dataType : dataType ,
-                responseType : responseType ,
+        config = util.merge(defaults, this.defaults, { method: 'GET' }, config );
+        config.method = config.method.toLowerCase();
+
+        console.log( config ,'config');
+
+        return new Promise(function(resolve, reject) {
+            let wxRequest = wx.request({
+                url : config.url ,
+                // data : config.data,
+                header : config.header,
+                method : config.method,
+                // dataType : config.dataType,
                 success : function (res) {
                     resolve( res.data )
                 },
@@ -26,40 +36,10 @@ class X {
                 complete : function () {
 
                 }
-            });
-        });
-    };
+            })
 
-    all ( promises) {
-        return Promise.all( promises );
-    }
-}
+            // wxRequest.abort()
 
-
-class Request {
-    constructor( config ){
-        this.defaults = config;
-    }
-    request(){
-        console.log( this.defaults ,"==========" )
-        return new Promise(function(resolve, reject) {
-            // wx.request({
-            //     url : url ,
-            //     data : data ,
-            //     header : header ,
-            //     method : method ,
-            //     dataType : dataType ,
-            //     responseType : responseType ,
-            //     success : function (res) {
-            //         resolve( res.data )
-            //     },
-            //     fail : function (err) {
-            //         reject(err)
-            //     },
-            //     complete : function () {
-
-            //     }
-            // });
         });
     }
     all (promises){
@@ -67,9 +47,12 @@ class Request {
     }
 }
 
-[OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT].forEach(e => {
-    Request.prototype[e] = function (url , config) {
-        return this.request( url , config)
+
+
+
+["options", "get", "head", "post", "put", "delete", "trace", "connect"].forEach(e => {
+    Request.prototype[e] = function ( config ) {
+        return this.request( config )
     }
 });
 

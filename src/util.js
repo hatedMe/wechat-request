@@ -25,3 +25,23 @@ export const extend = function (a,b, thisArg) {
 export const copyobj = function( a, b ){
     return Object.assign( {} , a ,b );
 }
+
+export const merge = function(){
+    var result = {};
+    Array.from(arguments).forEach( e =>{
+        for(let key in e){
+            if( typeof e[key] === 'object' && !isEmptyObject(e[key]) ){
+                merge( result[key] , e[key] )
+            }
+            result[key] = e[key]
+        }
+    })
+
+    return result;
+}
+
+
+
+export const isEmptyObject = function(obj){
+    return Object.getOwnPropertyNames(obj).length === 0
+}
