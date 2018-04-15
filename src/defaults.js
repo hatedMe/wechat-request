@@ -11,7 +11,7 @@ var defaults = {
     // baseURL: '',
     dataType : 'json',
     responseType : 'text',
-    timeout: 0,
+    // timeout: 0,
     headers: {},
 };
 
