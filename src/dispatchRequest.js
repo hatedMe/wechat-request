@@ -8,6 +8,9 @@ export const dispatchRequest = function (config) {
     if (config.baseURL && !util.isAbsoluteURL(config.url)) {
         config.url = util.combineURLs(config.baseURL, config.url);
     }
+
+
+
     return new Promise((resolve, reject) => {
         wx.request({
             url : config.url ,
@@ -16,7 +19,12 @@ export const dispatchRequest = function (config) {
             method : config.method,
             dataType : config.dataType,
             success : function (res) {
-                resolve( res.data )
+                resolve({
+                    data : res.data ,
+                    headers : res.header,
+                    status : res.statusCode,
+                    statusText : 'ok'
+                })
             },
             fail : function (err) {
                 reject(err)

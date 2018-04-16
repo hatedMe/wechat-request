@@ -27,7 +27,7 @@
 首先来一个简单的```get```请求
 ```js
 // 向具有给定ID的用户发出请求
-wxRequest.get('/user?ID=12345')
+wxRequest.get('/user?id=12345')
     .then(function (response) {
         console.log(response);
     })
@@ -38,7 +38,7 @@ wxRequest.get('/user?ID=12345')
 // 可选地，上面的请求也可以按照
 wxRequest.get('/user', {
     params: {
-        ID: 12345
+        id: 'number'
         }
     })
     .then(function (response) {
@@ -64,15 +64,15 @@ async function getUser() {
 
 ```js
 wxRequest.post('/user', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
-  .then(function (response) {
+    data :{
+        firstname : 'firstname',
+        lastname : 'lastname'
+    }
+}).then(function (response) {
     console.log(response);
-  })
-  .catch(function (error) {
+}).catch(function (error) {
     console.log(error);
-  });
+});
 ```
 
 执行多并发请求例子
