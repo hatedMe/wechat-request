@@ -27,7 +27,7 @@ class Request {
         // console.log( config ,'config');
 
         // dosoming 
-        // congif.baseUrl 
+        // config.baseUrl 
         
 
         let chain = [dispatchRequest, undefined];
@@ -46,7 +46,7 @@ class Request {
             promise = promise.then(chain.shift(), chain.shift());
         }
 
-        // if( congif.timeout && typeof congif.timeout === 'number' ){
+        // if( config.timeout && typeof config.timeout === 'number' ){
             
         // }
         // console.log( promise );
@@ -56,6 +56,39 @@ class Request {
     all (promises){
         return Promise.all(promises);
     }
+
+    uploadFile ( ){  // 上传图片
+        let config = util.merge({url: arguments[0]}, arguments[1]);
+        let formData;
+        if( config.formData && typeof config.formData === 'object' ){
+            formData = new FormData();
+            for(let attr in config.formData){
+                formData.append( attr , config.formData[attr] )
+            }
+            config.formData = formData
+        }
+        return new Promise((resolve, reject) => {
+            wx.uploadFile({
+                url: config.url, 
+                filePath: config.filePath,
+                name: config.name,
+                formData: config.formData,
+                success: function(res){
+                    resolve({
+                        data : res.data ,
+                        headers : res.header,
+                        status : res.statusCode,
+                        statusText : 'ok'
+                    })
+                },
+                fail (err) {
+                    reject(err)
+                },
+                complete() {}
+            })
+        });
+    }
+
 }
 
 

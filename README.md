@@ -4,6 +4,14 @@
 
 # wechat-request
 
+<p align="center">
+    <img src="https://img.shields.io/badge/version-%21.3.1%20%20-blue.svg?style=flat-square" />
+    <img src="https://img.shields.io/badge/wepy-%201.5.1%20-green.svg?style=flat-square" />
+    <img src="https://img.shields.io/npm/dm/wechat-request.svg?style=flat-square" />
+    <img src="https://img.shields.io/npm/v/wechat-request.svg?style=flat-square" />
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" />
+</p>
+
 > 基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富
 
 
@@ -19,6 +27,11 @@
 - 支持并发请求
 
 ## 使用方式
+
+```wepy```、```mpvue```框架中
+```npm install wechat-request --save ```
+```import wxRequest from 'wechat-request';```
+在原生中使用，只需要引入```dist/main.js```引入就好；
 
 
 
@@ -37,16 +50,14 @@ wxRequest.get('/user?id=12345')
 
 // 可选地，上面的请求也可以按照
 wxRequest.get('/user', {
-    params: {
+    data: {
         id: 'number'
-        }
-    })
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+    }
+}).then(function (response) {
+    console.log(response);
+}).catch(function (error) {
+    console.log(error);
+});
 
 // 想要使用 async/await？ 将`async`关键字添加到外部函数/method
 async function getUser() {
@@ -87,9 +98,9 @@ function getUserPermissions() {
 }
 
 wxRequest.all([getUserAccount(), getUserPermissions()])
-    .then(wxRequest.spread(function (acct, perms) {
-        // Both requests are now complete
-    }));
+    .then(response =>{
+        // dosoming ...
+    });
 ```
 
 ## 请求方法别名
@@ -104,7 +115,7 @@ wxRequest.all([getUserAccount(), getUserPermissions()])
 - ```wxRequest.put(url[, data[, config]])```
 - ```wxRequest.patch(url[, data[, config]])```
 
-> note 当使用别名方法`url`时，`method`和`data`属性不需要在config中指定。
+> note: 当使用别名方法`url`时，`method`和`data`属性不需要在config中指定。
 
 
 ### 全局配置
