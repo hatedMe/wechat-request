@@ -5,8 +5,6 @@
 # wechat-request
 
 <p align="center">
-    <img src="https://img.shields.io/badge/version-%21.3.1%20%20-blue.svg?style=flat-square" />
-    <img src="https://img.shields.io/badge/wepy-%201.5.1%20-green.svg?style=flat-square" />
     <img src="https://img.shields.io/npm/dm/wechat-request.svg?style=flat-square" />
     <img src="https://img.shields.io/npm/v/wechat-request.svg?style=flat-square" />
     <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" />
@@ -29,8 +27,11 @@
 ## 使用方式
 
 ```wepy```、```mpvue```框架中
+
 ```npm install wechat-request --save ```
+
 ```import wxRequest from 'wechat-request';```
+
 在原生中使用，只需要引入```dist/main.js```引入就好；
 
 
