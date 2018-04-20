@@ -26,11 +26,13 @@
 
 ## 使用方式
 
-```wepy```、```mpvue```框架中
-
+```mpvue```框架中
 ```npm install wechat-request --save ```
-
 ```import wxRequest from 'wechat-request';```
+
+```wepy```框架中
+```npm install wechat-request --save ```
+暂时只能```import wxRequest from 'wechat-request/dist/main.js';```使用
 
 在原生中使用，只需要引入```dist/main.js```引入就好；
 
