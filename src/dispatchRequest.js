@@ -9,13 +9,23 @@ export const dispatchRequest = function (config) {
         config.url = util.combineURLs(config.baseURL, config.url);
     }
 
+    config.headers = util.merge(
+        config.headers.common || {},
+        config.headers || {},
+        config.headers[config.method] || {},
+    )
 
+
+    let methods = ['delete', 'get', 'head', 'post', 'put', 'patch', 'common']
+    methods.forEach(method => {
+        delete config.headers[method];
+    });
 
     return new Promise((resolve, reject) => {
         wx.request({
             url : config.url ,
             data : config.data || {},
-            header : config.header,
+            header : config.headers,
             method : config.method,
             dataType : config.dataType,
             success : function (res) {

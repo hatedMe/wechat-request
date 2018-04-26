@@ -23,13 +23,6 @@ class Request {
         config.method = config.method.toLowerCase();
 
 
-
-        // console.log( config ,'config');
-
-        // dosoming 
-        // config.baseUrl 
-        
-
         let chain = [dispatchRequest, undefined];
         let promise = Promise.resolve( config );
 
@@ -96,7 +89,8 @@ class Request {
     Request.prototype[e] = function ( url,config ) {
         return this.request( util.merge(config || {} ,{
             method: e,
-            url: url
+            url: url,
+            //header : config.headers[e]
         }))
     }
 });
