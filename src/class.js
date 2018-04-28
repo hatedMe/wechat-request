@@ -19,9 +19,8 @@ class Request {
         if( typeof config === 'string'){
             config = util.merge({url: arguments[0]}, arguments[1]);
         }
-        config = util.merge(defaults, this.defaults, { method: 'GET' }, config );
+        config = util.merge(defaults, this.defaults,{ method: 'GET' }, config );
         config.method = config.method.toLowerCase();
-
 
         let chain = [dispatchRequest, undefined];
         let promise = Promise.resolve( config );
@@ -85,29 +84,14 @@ class Request {
 }
 
 
-['delete', 'get', 'head', 'options'].forEach(e => {
+['delete', 'get', 'head', 'options','post', 'put', 'patch'].forEach(e => {
     Request.prototype[e] = function ( url,config ) {
         return this.request( util.merge(config || {} ,{
             method: e,
-            url: url,
-            //header : config.headers[e]
-        }))
+            url: url
+        }) )
     }
 });
-
-
-['post', 'put', 'patch'].forEach(e => {
-    Request.prototype[e] = function ( config ) {
-        return this.request( config )
-    }
-});
-
-
-// ["options", "get", "head", "post", "put", "delete", "trace", "connect"].forEach(e => {
-//     Request.prototype[e] = function ( config ) {
-//         return this.request( config )
-//     }
-// });
 
 
 

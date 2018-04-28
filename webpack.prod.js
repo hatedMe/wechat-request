@@ -19,11 +19,11 @@ module.exports = {
 	output: {
 		// library: 'wxRequest', 
         libraryTarget: 'umd', 
-        // umdNamedDefine: true , 
+        umdNamedDefine: true , 
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	},
-	devtool : false,
+	devtool : 'source-map',
 	module: {
 		rules: [
 			{
@@ -44,7 +44,7 @@ module.exports = {
 			`
 author : 7548764@qq.com
 github : https://github.com/hatedMe/wechat-request
-version : 1.4.0
+version : 1.4.1
 		`
 		)
 	]

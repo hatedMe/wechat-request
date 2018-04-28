@@ -15,13 +15,8 @@ var defaults = {
     headers: {},
 };
 
-
-["delete","get","head"].forEach(e => {
-    defaults.headers[e] = {};
-});
-
-['post', 'put', 'patch'].map(e => {
-    defaults.headers = util.merge(defaults.headers , DEFAULT_CONTENT_TYPE);
+['delete','get', 'head','post', 'put', 'patch'].map(e => {
+    defaults.headers[e] = util.merge(defaults.headers , DEFAULT_CONTENT_TYPE);
 });
 
 

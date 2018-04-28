@@ -1,11 +1,11 @@
 {
   "name": "wechat-request",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development",
+    "dev": "webpack --config=webpack.prod.js --mode development",
     "build": "webpack --config=webpack.prod.js --mode production"
   },
   "keywords": [
