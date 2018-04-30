@@ -25,7 +25,6 @@ export default class InterceptorManager{
     forEach(fn){
         this.handlers.forEach(e =>{
             if(e !== null ){
-                e = [e];
                 fn(e)
             }
         })

@@ -1,6 +1,6 @@
 {
   "name": "wechat-request",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富",
   "main": "dist/main.js",
   "scripts": {

@@ -32,16 +32,10 @@ class Request {
         this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
             chain.push(interceptor.fulfilled, interceptor.rejected);
         });
-        // wxRequest.abort()
 
         while (chain.length) {
             promise = promise.then(chain.shift(), chain.shift());
         }
-
-        // if( config.timeout && typeof config.timeout === 'number' ){
-            
-        // }
-        // console.log( promise );
     
         return promise;
     }

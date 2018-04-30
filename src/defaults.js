@@ -15,6 +15,12 @@ var defaults = {
     headers: {},
 };
 
+defaults.headers = {
+    common: {
+      'Accept': 'application/json, text/plain, */*'
+    }
+};
+
 ['delete','get', 'head','post', 'put', 'patch'].map(e => {
     defaults.headers[e] = util.merge(defaults.headers , DEFAULT_CONTENT_TYPE);
 });

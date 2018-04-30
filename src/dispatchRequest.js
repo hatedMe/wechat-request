@@ -15,7 +15,6 @@ export const dispatchRequest = function (config) {
         config.headers[config.method] || {},
     )
 
-
     let methods = ['delete', 'get', 'head', 'post', 'put', 'patch', 'common']
     methods.forEach(method => {
         delete config.headers[method];
