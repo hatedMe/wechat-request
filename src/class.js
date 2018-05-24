@@ -17,7 +17,7 @@ class Request {
     }
     request( config ){
         if( typeof config === 'string'){
-            config = util.merge({url: arguments[0]}, arguments[1]);
+            config = util.merge({url: arguments[0]}, {data: arguments[1]});
         }
         config = util.merge(defaults, this.defaults,{ method: 'GET' }, config );
         config.method = config.method.toLowerCase();
