@@ -20,6 +20,10 @@ function createInstance(config) {
 
 let request = createInstance(defaults);
 
+// 用于创建多个实例
+request.create = function (config) {
+    return createInstance(utils.merge(defaults, config));
+}
 
 export default request; 
 
