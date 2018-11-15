@@ -3,7 +3,7 @@
 import * as util from './util';
 
 let DEFAULT_CONTENT_TYPE = {
-    'Content-Type': 'application/x-www-form-urlencoded'
+    'content-type': 'application/json'
 };
 
 var defaults = {
