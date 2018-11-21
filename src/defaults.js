@@ -11,8 +11,14 @@ var defaults = {
     // baseURL: '',
     dataType : 'json',
     responseType : 'text',
-    // timeout: 0,
-    headers: {},
+
+    timeout: 0,
+    // xsrfCookieName: 'XSRF-TOKEN',
+    // xsrfHeaderName: 'X-XSRF-TOKEN',
+    // maxContentLength: -1,
+    // validateStatus: function validateStatus(status) {
+    //     return status >= 200 && status < 300;
+    // }
 };
 
 defaults.headers = {
