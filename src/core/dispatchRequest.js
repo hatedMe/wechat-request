@@ -1,6 +1,6 @@
 
 
-import * as util from './util';
+import * as util from '../helpers/util';
 
 
 export const dispatchRequest = function (config) {
@@ -8,12 +8,19 @@ export const dispatchRequest = function (config) {
     if (config.baseURL && !util.isAbsoluteURL(config.url)) {
         config.url = util.combineURLs(config.baseURL, config.url);
     }
+    
+    config.url = util.buildURL( config.url , config.params );
+
+    config.data = util.merge(
+        config.data , 
+        config.transformRequest(config.data)
+    );
 
     config.headers = util.merge(
         config.headers.common || {},
-        config.headers || {},
         config.headers[config.method] || {},
-    )
+        config.headers || {},
+    );
 
     let methods = ['delete', 'get', 'head', 'post', 'put', 'patch', 'common']
     methods.forEach(method => {

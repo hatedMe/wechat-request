@@ -1,6 +1,6 @@
 
 
-import * as util from './util';
+import * as util from './helpers/util';
 
 let DEFAULT_CONTENT_TYPE = {
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -13,6 +13,21 @@ var defaults = {
     responseType : 'text',
     // timeout: 0,
     headers: {},
+
+    // params : {},
+
+    transformRequest (data) {
+        return data;
+    },
+
+    // transformResponse (data) {
+    //     return data;
+    // },
+
+    // validateStatus ( status ) {
+    //     return status >= 200 && status < 300
+    // }
+
 };
 
 defaults.headers = {
