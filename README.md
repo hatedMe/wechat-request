@@ -26,7 +26,7 @@
 
 ## 使用方式
 
-```mpvue```、```wepy```框架中
+```yarn add wechat-request``` <br />
 ```npm install wechat-request --save ```<br />
 ```import wxRequest from 'wechat-request';```<br />
 
@@ -39,18 +39,18 @@
 ```js
 // 向具有给定ID的用户发出请求
 wxRequest.get('/user?id=12345')
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+.then(function (response) {
+	console.log(response);
+})
+.catch(function (error) {
+	console.log(error);
+});
 
 // 可选地，上面的请求也可以按照
 wxRequest.get('/user', {
-    data: {
-        id: 'number'
-    }
+	params: {
+			id: 'number'
+	}
 }).then(function (response) {
     console.log(response);
 }).catch(function (error) {
@@ -59,28 +59,26 @@ wxRequest.get('/user', {
 
 // 想要使用 async/await？ 将`async`关键字添加到外部函数/method
 async function getUser() {
-    try {
-        const response = await wxRequest.get('/user?ID=12345');
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
+	try {
+		const response = await wxRequest.get('/user?ID=12345');
+		console.log(response);
+	} catch (error) {
+		console.error(error);
+	}
 }
 ```
-> 想要开启 async/waait 畅快之旅，需要 bable2阶段。吼吼
+> 多种方法使用async/waait，开启代码便捷、畅快之旅
 
 接着再来一个```post```请求
 
 ```js
 wxRequest.post('/user', {
-    data :{
-        firstname : 'firstname',
-        lastname : 'lastname'
-    }
+	firstname : 'firstname',
+	lastname : 'lastname'
 }).then(function (response) {
-    console.log(response);
+  console.log(response);
 }).catch(function (error) {
-    console.log(error);
+  console.log(error);
 });
 ```
 
@@ -88,17 +86,17 @@ wxRequest.post('/user', {
 
 ```js
 function getUserAccount() {
-    return wxRequest.get('/user/12345');
+  return wxRequest.get('/user/12345');
 }
 
 function getUserPermissions() {
-    return wxRequest.get('/user/12345/permissions');
+  return wxRequest.get('/user/12345/permissions');
 }
 
 wxRequest.all([getUserAccount(), getUserPermissions()])
-    .then(response =>{
-        // dosoming ...
-    });
+	.then(response =>{
+			// dosoming ...
+	});
 ```
 
 ## 请求方法别名
@@ -122,7 +120,7 @@ wxRequest.all([getUserAccount(), getUserPermissions()])
 
 ```js
 wxRequest.defaults.baseURL = 'https://api.example.com';
-wxRequest.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+wxRequest.defaults.headers['Authorization'] = AUTH_TOKEN;
 wxRequest.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
