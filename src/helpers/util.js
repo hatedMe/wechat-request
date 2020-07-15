@@ -1,4 +1,4 @@
-
+import _deepMerge from 'deepmerge';
 
 
 
@@ -26,7 +26,7 @@ export const copyobj = function( a, b ){
     return Object.assign( {} , a ,b );
 }
 
-
+// ps: 这里可能也有问题
 export const merge = function(){
     var result = {};
     Array.from(arguments).forEach( e =>{
@@ -41,20 +41,9 @@ export const merge = function(){
 }
 
 
-
 export const deepMerge = function () {
-    let result = {};
-    Array.from(arguments).forEach(e =>{
-        if( e && typeof e === 'object' && !isEmptyObject(e) ) {
-            Object.keys(e).forEach( key => {
-                if( typeof e[key] === 'object'){
-                    return result[key] = deepMerge( result[key] , e[key] )
-                }
-                result[key] = e[key]
-            });
-        }
-    })
-    return result ;
+    let result = _deepMerge.apply(undefined, Array.from(arguments));
+    return result;
 }
 
 
