@@ -1,6 +1,6 @@
 {
-  "name": "wechat-request",
-  "version": "2.2.0",
+  "name": "@bucai/wechat-request",
+  "version": "2.2.2",
   "description": "基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富",
   "main": "dist/main.js",
   "scripts": {
@@ -23,13 +23,16 @@
     "url": "https://github.com/hatedMe/wechat-request/issues"
   },
   "license": "ISC",
-  "author": "Atom <7548764@qq.com>",
+  "author": "Atom <7548764@qq.com>,不才 <1450941858@qq.com>",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.5.0",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2"
   }
 }
