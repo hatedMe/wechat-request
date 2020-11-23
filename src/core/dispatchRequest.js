@@ -41,11 +41,12 @@ export const dispatchRequest = function (config) {
                         data : res.data ,
                         headers : res.header,
                         status : res.statusCode,
-                        statusText : 'ok'
+                        statusText : 'ok',
+                        config,
                     })
                 },
                 fail : function (err) {
-                    reject(err)
+                    reject(util.copyobj(err, config))
                 },
                 complete :  function () {
                     config.complete && config.complete()
@@ -56,7 +57,8 @@ export const dispatchRequest = function (config) {
                 setTimeout(() =>{
                     requestTask.abort();
                     resolve({
-                        status : 'canceled'
+                        status : 'canceled',
+                        config,
                     });
                 },config.timeout)
             }

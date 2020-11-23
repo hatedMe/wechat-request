@@ -30,7 +30,7 @@ module.exports = {
 		new webpack.BannerPlugin(`
 			author : 7548764@qq.com
 			github : https://github.com/hatedMe/wechat-request
-			version : 2.2.0
+			version : 2.2.0-1
 		`)
 	]
 };
