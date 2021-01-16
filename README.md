@@ -30,7 +30,6 @@
 ```npm install wechat-request --save ```<br />
 ```import wxRequest from 'wechat-request';```<br />
 
-在原生中使用，只需要引入```dist/main.js```引入就好；
 
 
 ## 一步上手
