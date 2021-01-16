@@ -31,10 +31,10 @@ export const merge = function(){
     var result = {};
     Array.from(arguments).forEach( e =>{
         for(let key in e){
-            if( typeof e[key] === 'object' && !isEmptyObject(e[key]) ){
+            if( e[key] && typeof e[key] === 'object' && !isEmptyObject(e[key]) ){
                 merge( result[key] , e[key] )
             }
-            result[key] = e[key]
+            result[key] = e[key];
         }
     });
     return result;
@@ -47,10 +47,12 @@ export const deepMerge = function () {
     Array.from(arguments).forEach(e =>{
         if( e && typeof e === 'object' && !isEmptyObject(e) ) {
             Object.keys(e).forEach( key => {
-                if( typeof e[key] === 'object'){
-                    return result[key] = deepMerge( result[key] , e[key] )
+                if( e[key] && typeof e[key] === 'object'){
+                    result[key] = deepMerge( result[key] , e[key] )
                 }
-                result[key] = e[key]
+                
+                result[key] = e[key];
+                // console.log( result[key],  e[key] );
             });
         }
     })

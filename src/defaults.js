@@ -37,7 +37,7 @@ defaults.headers = {
 };
 
 ['delete','get', 'head','post', 'put', 'patch'].map(e => {
-    defaults.headers[e] = util.merge(defaults.headers , DEFAULT_CONTENT_TYPE);
+    defaults.headers[e] = util.merge( defaults.headers , DEFAULT_CONTENT_TYPE);
 });
 
 
