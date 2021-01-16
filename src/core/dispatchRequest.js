@@ -1,18 +1,14 @@
-
-
-import * as util from '../helpers/util';
-
-
+import * as util from "../helpers/util";
 export const dispatchRequest = function (config) {
 
     if (config.baseURL && !util.isAbsoluteURL(config.url)) {
         config.url = util.combineURLs(config.baseURL, config.url);
     }
-    
+
     config.url = util.buildURL( config.url , config.params );
 
     config.data = util.merge(
-        config.data , 
+        config.data ,
         config.transformRequest(config.data)
     );
 
@@ -22,17 +18,17 @@ export const dispatchRequest = function (config) {
         config.headers || {},
     );
 
-    let methods = ['delete', 'get', 'head', 'post', 'put', 'patch', 'common']
+    let methods = ["delete", "get", "head", "post", "put", "patch", "common"];
     methods.forEach(method => {
         delete config.headers[method];
     });
 
     let promise = Promise.resolve( config );
     promise = promise.then( config => {
-       return new Promise(function(resolve, reject) {
+        return new Promise(function(resolve, reject) {
             let requestTask =  wx.request({
                 url : config.url ,
-                data : config.data || {},
+                data : util.buildData(config.data),
                 header : config.headers,
                 method : config.method,
                 dataType : config.dataType,
@@ -41,28 +37,28 @@ export const dispatchRequest = function (config) {
                         data : res.data ,
                         headers : res.header,
                         status : res.statusCode,
-                        statusText : 'ok'
-                    })
+                        statusText : "ok"
+                    });
                 },
                 fail : function (err) {
-                    reject(err)
+                    reject(err);
                 },
                 complete :  function () {
-                    config.complete && config.complete()
+                    config.complete && config.complete();
                 }
-            })
+            });
 
-            if( config.timeout && typeof config.timeout === 'number' && config.timeout > 1000 ){
+            if( config.timeout && typeof config.timeout === "number" && config.timeout > 1000 ){
                 setTimeout(() =>{
                     requestTask.abort();
                     resolve({
-                        status : 'canceled'
+                        status : "canceled"
                     });
-                },config.timeout)
+                },config.timeout);
             }
         });
-    })
+    });
 
     return promise;
-}
+};
 

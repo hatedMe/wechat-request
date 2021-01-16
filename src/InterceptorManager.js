@@ -1,8 +1,3 @@
-
-
-
-
-
 export default class InterceptorManager{
     constructor(){
         this.handlers = [];
@@ -25,9 +20,9 @@ export default class InterceptorManager{
     forEach(fn){
         this.handlers.forEach(e =>{
             if(e !== null ){
-                fn(e)
+                fn(e);
             }
-        })
+        });
     }
 }
 

@@ -1,12 +1,11 @@
 {
   "name": "wechat-request",
-  "version": "2.3.0",
+  "version": "2.5.0",
   "description": "基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --config=webpack.prod.js --mode development",
-    "build": "webpack --config=webpack.prod.js --mode production"
+    "lint" : "eslint src --fix"
   },
   "keywords": [
     "request",
@@ -24,12 +23,8 @@
   },
   "license": "ISC",
   "author": "Atom <7548764@qq.com>",
+  "files": ["src","index.d.ts"],
+  "types": "index.d.ts",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^3.3.6"
   }
 }

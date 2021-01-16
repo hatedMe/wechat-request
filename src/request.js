@@ -5,9 +5,9 @@
 
 
 
-import Request from './class';
-import * as util from './helpers/util';
-import defaults from './defaults';
+import Request from "./class";
+import * as util from "./helpers/util";
+import defaults from "./defaults";
 
 
 function createInstance(config) {
@@ -30,8 +30,8 @@ request.create = function (config) {
 request.spread = function (callback){
     return function (...arg) {
         return callback.apply(null , [...arg] );
-    }
-}
+    };
+};
 
 
 export default request; 
