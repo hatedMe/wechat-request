@@ -5,12 +5,12 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
 	entry: './index.js',
 	output: {
-        libraryTarget: 'umd', 
-        umdNamedDefine: true , 
+		libraryTarget: 'umd',
+		umdNamedDefine: true,
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	},
-	devtool : 'source-map',
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{
@@ -19,7 +19,7 @@ module.exports = {
 				loader: 'babel-loader',
 				options: {
 					presets: ['env'],
-					plugins : 'transform-es2015-modules-commonjs'
+					plugins: 'transform-es2015-modules-commonjs'
 				}
 			}
 		]
@@ -28,9 +28,9 @@ module.exports = {
 	plugins: [
 		new UglifyJSPlugin(),
 		new webpack.BannerPlugin(`
-			author : 7548764@qq.com
-			github : https://github.com/hatedMe/wechat-request
-			version : 2.2.0-1
+			author : 1450941858@qq.com
+			github : https://github.com/notbucai/wechat-request
+			version : 2.2.3
 		`)
 	]
 };

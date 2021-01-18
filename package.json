@@ -1,6 +1,6 @@
 {
   "name": "@bucai/wechat-request",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富",
   "main": "dist/main.js",
   "scripts": {
