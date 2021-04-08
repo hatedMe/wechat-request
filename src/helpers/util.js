@@ -95,7 +95,6 @@ export const buildData = data => {
     if( !isObject(data) || isEmptyObject(data) ) return {};
     const result = {};
     Object.keys(data).forEach( key => {
-        console.log( key );
         if (data[key] !== null && typeof data[key] !== "undefined") {
             result[key] = data[key];
         }
