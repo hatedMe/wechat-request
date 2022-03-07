@@ -1,22 +1,20 @@
-
-
 import * as util from "./helpers/util";
 
 let DEFAULT_CONTENT_TYPE = {
-    "Content-Type": "application/x-www-form-urlencoded"
+    "Content-Type": "application/x-www-form-urlencoded",
 };
 
-var defaults = {
+const defaults = {
     method: "get", // default
     // baseURL: '',
-    dataType : "json",
-    responseType : "text",
+    dataType: "json",
+    responseType: "text",
     // timeout: 0,
     headers: {},
 
     // params : {},
 
-    transformRequest (data) {
+    transformRequest(data) {
         return data;
     },
 
@@ -27,18 +25,16 @@ var defaults = {
     // validateStatus ( status ) {
     //     return status >= 200 && status < 300
     // }
-
 };
 
 defaults.headers = {
     common: {
-        "Accept": "application/json, text/plain, */*"
-    }
+        Accept: "application/json, text/plain, */*",
+    },
 };
 
-["delete","get", "head","post", "put", "patch"].map(e => {
-    defaults.headers[e] = util.merge( defaults.headers , DEFAULT_CONTENT_TYPE);
+["delete", "get", "head", "post", "put", "patch"].map((e) => {
+    defaults.headers[e] = util.merge(defaults.headers, DEFAULT_CONTENT_TYPE);
 });
-
 
 export default defaults;

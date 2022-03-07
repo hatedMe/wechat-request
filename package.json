@@ -1,11 +1,12 @@
 {
   "name": "wechat-request",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint" : "eslint src --fix"
+    "lint" : "eslint -c ./.eslintrc.js --ext .js src/ --fix",
+    "lint-prettire": "prettier --write src/**/*.{vue,js,jsx,less}"
   },
   "keywords": [
     "request",
