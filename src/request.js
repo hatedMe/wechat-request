@@ -15,7 +15,6 @@ function createInstance(config) {
 }
 
 const request = createInstance(defaults);
-console.log(request.create , "request.create");
 // 并发请求数据处理
 request.spread = function (callback) {
     return function (...arg) {
