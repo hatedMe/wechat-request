@@ -4,8 +4,9 @@
   "description": "基于Promise微信小程序http请求，轻便，小巧，api友好，功能丰富",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint" : "eslint -c ./.eslintrc.js --ext .js src/ --fix",
+    "dev": "rollup index.js --file dist/index.js --format umd --name wechatRequest -w",
+    "build": "rollup index.js --file dist/index.js --format umd --name wechatRequest",
+    "lint": "eslint -c ./.eslintrc.js --ext .js src/ --fix",
     "lint-prettire": "prettier --write src/**/*.{vue,js,jsx,less}"
   },
   "keywords": [
@@ -24,8 +25,10 @@
   },
   "license": "ISC",
   "author": "Atom <7548764@qq.com>",
-  "files": ["src","index.d.ts"],
+  "files": [
+    "src",
+    "index.d.ts"
+  ],
   "types": "index.d.ts",
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
